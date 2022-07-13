@@ -4,6 +4,17 @@ body {
     background-color: #a3afcf !important;
 }
 
+.d-none {
+    display: none;
+}
+
+.transparent {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
 main {
     display: flex;
     align-items: center;
@@ -11,36 +22,68 @@ main {
     min-height: 100vh;
 }
 
-.container-row {
-    background-color: #f7f7f7;
+.container {
     display: flex;
     justify-content: center;
-    border-radius: 5px;
-    -webkit-box-shadow: 5px 5px 12px 0px rgba(0, 0, 0, 0.7);
-    box-shadow: 5px 5px 12px 0px rgba(0, 0, 0, 0.7);
 }
 
-.side-nav {
+.nav-container {
     background-color: #27355c;
-    margin-right: 20px;
-    border-radius: 5px 0 0 5px;
+    height: 100%;
 }
 
-.side-nav img {
-    padding: 20px;
+.logo {
+    padding: 20px 20px 50px 20px;
 }
 
-.side-nav a {
+.inner-container {
+    display: flex;
+    align-items: center;
+    background-color: #f7f7f7;
+    height: 25rem;
+    -webkit-box-shadow: 3px 3px 15px 0px rgba(0, 0, 0, 0.7);
+    box-shadow: 3px 3px 15px 0px rgba(0, 0, 0, 0.7);
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-link {
     border-left: 4px solid transparent;
+    cursor: pointer;
 }
 
-.side-nav a:hover {
+.nav-link:hover {
     border-left: 4px solid white;
 }
 
-.question-row {
+.active {
+    border-left: 4px solid white;
+}
+
+.card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.card {
+    width: 25rem;
+    border: none !important;
+    background-color: transparent !important;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quiz-container {
     padding: 20px;
-    min-width: 500px;
+    width: 25rem;
 }
 
 .answer-container {
@@ -51,15 +94,22 @@ main {
 
 .answer-title {
     text-align: center;
-    padding-bottom: 20px;
     font-weight: bold;
+}
+
+.answer-row {
+    position: relative;
 }
 
 .answer {
     display: flex;
     padding: 10px;
     background-color: white;
+}
+
+.answer:hover {
     cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .list {
@@ -74,5 +124,64 @@ main {
 .question-footer {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+}
+
+.btn-primary {
+    background-color: #27355c !important;
+    border-color: #27355c !important;
+}
+
+.btn-primary:hover {
+    background-color: #516dbd !important;
+    border-color: #516dbd !important;
+}
+
+.card-img-top {
+    width: 25% !important;
+    padding-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    .inner-container {
+        flex-direction: column;
+        height: 100%;
+        padding-bottom: 20px;
+    }
+    .nav-container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: unset;
+        border-radius: 0.25rem;
+    }
+    .logo {
+        padding: unset;
+        width: 60px;
+        height: 52px;
+        margin: 20px;
+    }
+    .nav {
+        display: flex;
+        flex-direction: unset;
+        padding-right: 20px;
+    }
+    .nav-link {
+        border-left: unset;
+        border-bottom: 4px solid transparent;
+    }
+    .nav-link:hover {
+        border-left: unset;
+        border-bottom: 4px solid white;
+    }
+}
+
+@media (max-width: 430px) {
+    .card,
+    .quiz-container {
+        width: 18rem;
+    }
+    .nav-link {
+        padding: 0.5rem !important;
+        font-size: 0.9rem;
+    }
 }

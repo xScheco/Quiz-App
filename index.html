@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <script src="data.js"></script>
     <script src="script.js"></script>
 
     <!-- Bootstrap files -->
@@ -18,42 +20,68 @@
 
 <body>
     <main>
-        <div class="container-row">
-            <div class="side-nav">
-                <img src="img/logo.png" alt="logo">
-                <nav class="nav flex-column">
-                    <a class="nav-link text-white" aria-current="page" href="#">HTML</a>
-                    <a class="nav-link text-white" href="#">CSS</a>
-                    <a class="nav-link text-white" href="#">JavaScript</a>
-                </nav>
-            </div>
-            <div class="question-row">
-                <div class="answer-container">
-                    <div class="answer-title w-100">Wer hat HTML erfunden?</div>
-                    <div class="answer-row w-100">
-                        <div class="answer">
-                            <div class="list">A</div>
-                            <div class="text">Robbie Williams</div>
-                        </div>
-                        <div class="answer mb-1">
-                            <div class="list">B</div>
-                            <div class="text">Lady Gaga</div>
-                        </div>
-                        <div class="answer mb-1">
-                            <div class="list">C</div>
-                            <div class="text">Tim Berners - Lee</div>
-                        </div>
-                        <div class="answer mb-1">
-                            <div class="list">D</div>
-                            <div class="text">Justin Bieber</div>
+        <div class="container">
+            <div class="inner-container rounded-2">
+                <div class="nav-container rounded-start">
+                    <img class="logo" src="img/logo.png" alt="logo">
+                    <nav class="nav">
+                        <a class="nav-link text-white" onclick="setHtml()" id="html">HTML</a>
+                        <a class="nav-link text-white" onclick="setCss()" id="css">CSS</a>
+                        <a class="nav-link text-white" onclick="setJs()" id="js">JavaScript</a>
+                    </nav>
+                </div>
+                <div class="card-wrapper" id="welcome">
+                    <div class="card mb-5">
+                        <div class="card-body">
+                            <h5 class="card-title">Willkommen zu</h5>
+                            <p class="card-text fw-bold">Das fantastische <span id="category"></span> Quiz</p>
+                            <p class="card-text">Bereit für die Herausforderung?</p>
                         </div>
                     </div>
-                    <div class="question-footer w-100">
-                        <span>
-                            <b>1</b> von <b>5</b> Fragen
+                    <button class="btn btn-primary me-4" onclick="checkCategory()">Spiel Starten</button>
+                </div>
+                <div class="quiz-container d-none" id="quiz-card">
+                    <div class="progress mb-2">
+                        <div class="progress-bar" role="progressbar" style="width: 25%;" id="progress-bar">25%</div>
+                    </div>
+                    <div class="answer-container">
+                        <div class="answer-title w-100 pb-2 fs-6" id="question-title"></div>
+                        <div class="answer-row w-100">
+                            <div class="transparent d-none" id="transparent"></div>
+                            <div class="answer mb-2 rounded-2" id="reply_0" onclick="answer('reply_0')">
+                                <div class="list">A</div>
+                                <div class="text" id="answer_0"></div>
+                            </div>
+                            <div class="answer mb-2 rounded-2" id="reply_1" onclick="answer('reply_1')">
+                                <div class="list">B</div>
+                                <div class="text" id="answer_1"></div>
+                            </div>
+                            <div class="answer mb-2 rounded-2" id="reply_2" onclick="answer('reply_2')">
+                                <div class="list">C</div>
+                                <div class="text" id="answer_2"></div>
+                            </div>
+                            <div class="answer mb-2 rounded-2" id="reply_3" onclick="answer('reply_3')">
+                                <div class="list">D</div>
+                                <div class="text" id="answer_3"></div>
+                            </div>
+                        </div>
+                        <div class="question-footer w-100 pt-2">
+                            <span>
+                            <b id="current-question"></b> von <b id="all-questions"></b> Fragen
                         </span>
-                        <a href="#" class="btn btn-primary button">Weiter</a>
+                            <button onclick="nextQuestion(0)" class="btn btn-primary button" id="next" disabled>Weiter</button>
+                        </div>
                     </div>
+                </div>
+                <div class="card-wrapper d-none" id="end">
+                    <div class="card mb-5">
+                        <div class="card-body">
+                            <img src="img/brain result.png" class="card-img-top" alt="finish-logo">
+                            <h5 class="card-title">Quiz zu Ende</h5>
+                            <p class="card-text fw-bold">Deine Punkte <span id="right-answer"></span> von 4</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary me-4" onclick="restartQuiz()" id="restart">Spiel Neustarten</button>
                 </div>
             </div>
         </div>
